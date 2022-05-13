@@ -1,21 +1,44 @@
 console.log('subj_bar.js')
 function convertBehData(behData, id) {
     return {
-        labels: ['Reward Block', 'Loss Block'], 
+        labels: ['Reward', 'Loss'], 
         datasets:[{
+            type: "bar",
             data: [behData[id].RewardBlock.RewardTrial, behData[id].LossBlock.RewardTrial],
             label:"Reward Trial",   // legend name 
             fill:false,    // fill areas below line
-            borderColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgba(34, 139, 34, 0.8)',
             backgroundColor: 'rgba(34, 139, 34, 0.8)',
             order: 1,
-            barPercentage: 0.5
+            categoryPercentage: 0.2,
+            barPercentage: 0.3
         }, 
-        {   data: [behData[id].RewardBlock.LossTrial, behData[id].LossBlock.LossTrial],
+        {   
+            type: "bar",
+            data: [behData[id].RewardBlock.LossTrial, behData[id].LossBlock.LossTrial],
             label:"Loss Trial",   // legend name 
             fill:false,    // fill areas below line
-            borderColor: '#fff',
+            borderColor: 'rgba(255, 79, 0, 0.8)',
             backgroundColor: 'rgba(255, 79, 0, 0.8)',
+            order: 1,
+            categoryPercentage: 0.2,
+            barPercentage: 0.3
+        }, { 
+            type: "line",
+            data: [(behData[id].RewardBlock.RewardTrial + behData[id].RewardBlock.LossTrial)/2, (behData[id].LossBlock.RewardTrial + behData[id].LossBlock.LossTrial)/2],
+            label:"Block Effect",   // legend name 
+            fill:false,    // fill areas below line
+            borderColor: '#444',
+            backgroundColor: '#444',
+            order: 1,
+            barPercentage: 0.5
+        }, { 
+            type: "line",
+            data: [(behData[id].RewardBlock.RewardTrial + behData[id].LossBlock.RewardTrial)/2, (behData[id].RewardBlock.LossTrial + behData[id].LossBlock.LossTrial)/2],
+            label:"Trial Effect",   // legend name 
+            fill:false,    // fill areas below line
+            borderColor: '#ccc',
+            backgroundColor: '#ccc',
             order: 1,
             barPercentage: 0.5
         }]
@@ -25,7 +48,7 @@ function plotBeh(behData, id) {
     //console.log(data)
     const dummy_dataset = convertBehData(behData, id);
     const config = {
-        type:"bar",
+        // type:"bar",
         data: dummy_dataset,
         options:{
           responsive:true,
@@ -36,9 +59,19 @@ function plotBeh(behData, id) {
                 }
             },
             scales: {
+                x:{
+                    
+                },
                 y:{
                     beginAtZero: true,
                     max:1
+                }
+            },
+            legend: {
+                display: true,
+                position: 'left',
+                labels: {
+                    color: 'rgb(255, 99, 132)'
                 }
             }
         },
@@ -71,4 +104,4 @@ function plotUpdateBeh(chart,behData, id) {
     chart.options.plugins.title.text = 'Probability of Switching - Subject (' + id + ')';
     chart.data = dummy_dataset;
     chart.update()
-}
+} 

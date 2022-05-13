@@ -24,27 +24,27 @@
         <div id="clean"></div>
 
         <h2>Visualize Data</h2>
-        
-        <div id="vis" class="float-parent-element">
-          
-          <!-- <h3>Max LogLikelihood (MLL)</h3> -->
-          <div class="float-parent-element"><canvas id="max_loglikelihood"></canvas></div>
-          
-          <!-- <h3>Probability of Switch</h3> -->
-          <div class="float-child-element"><canvas id="subj_pswitch"></canvas></div>
-          <div class="float-child-element"><canvas id="model_pswitch"></canvas></div>
-          <div class="float-child-element"></div>
-          <!-- <div class="float-child-element"><canvas id="m2_pswitch"></canvas></div> -->
-        </br>
-          <h3>Density Curve of MLL Diff (M1 - M2)</h3>
-          <div class="float-child-element"><div id="vis_hist1"></div></div>
-          <div class="float-child-element"><div id="vis_hist2"></div></div>
+        <div class="wrapper">
+          <div class="box2">1
+            <canvas id="max_loglikelihood" style="position: relative; height:55vh; width:20vw"></canvas>
+          </div>
+          <div class="box">
+            <canvas id="subj_pswitch" style="position: relative; height:20vh; width:20vw"></canvas>
+            <canvas id="m1_pswitch" style="position: relative; height:20vh; width:20vw"></canvas>
+            <canvas id="m2_pswitch" style="position: relative; height:20vh; width:20vw"></canvas>
+          </div>
+          <div class="box">
+            <p>Max LL Density plot of M1-M2</p>
+            <div id="vis_hist1"></div>
+          </div>
+          <div class="box">
+            <p>Max LL Density plot of M1 and M2</p>
+            <div id="vis_hist2"></div>
+          </div>
         </div>
-
-        <!-- <div id="vis_pswitch"></div> -->
         
-
-        
+         
+ 
 
     </main>
 	<!-- <script src="index.js"></script> -->

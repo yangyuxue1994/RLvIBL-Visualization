@@ -8,7 +8,7 @@ var mData = [];
 
 var currID = 0;
 var subjectChart = null;
-var modelCharts = null;
+var modelCharts = [];
 
 const url = 'https://raw.githubusercontent.com/UWCCDL/RLvIBL/actr/actr-models/model_output/MODELLogLikelihood.csv';
 d3.csv(url)
@@ -85,8 +85,9 @@ d3.csv(url)
     plotHist1(LLDataSorted);
     plotHist2(LLDataSorted);
     subjectChart = plotBeh(behData, 0);
-    modelCharts = plotModelData(mData, 0);
-    
+    var m1Chart = plotModel1Data(mData, 0);
+    var m2Chart = plotModel2Data(mData, 0);
+    modelCharts = [m1Chart, m2Chart];
 });
 
 
