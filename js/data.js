@@ -18,7 +18,7 @@ d3.csv(url)
         // console.log(d)
         d['PSwitch.LL.m1'] = +d['PSwitch.LL.m1'];
         d['PSwitch.LL.m2'] = +d['PSwitch.LL.m2'];
-        d['LLDiff'] = d['PSwitch.LL.m1']-d['PSwitch.LL.m2'];
+        d['LLDiff'] = Math.abs(d['PSwitch.LL.m1']-d['PSwitch.LL.m2']);
         // if(d.LLDiff != 0){
         //     if (d.LLDiff > 0) {
         //         d.color = '#fee0d2'
