@@ -78,7 +78,7 @@ function convertModelData(mData, id, m) {
         }, { 
             type: "line",
             data: [(mData[id][m].RewardBlock.RewardTrial + mData[id][m].RewardBlock.LossTrial)/2, (mData[id]['m1'].LossBlock.RewardTrial + mData[id]['m1'].LossBlock.LossTrial)/2],
-            label:"M1 Block Effect",   // legend name 
+            label:"Block Effect",   // legend name 
             fill:false,    // fill areas below line
             borderColor: '#444',
             backgroundColor: '#444',
@@ -87,7 +87,7 @@ function convertModelData(mData, id, m) {
         }, { 
             type: "line",
             data: [(mData[id][m].RewardBlock.RewardTrial + mData[id][m].LossBlock.RewardTrial)/2, (mData[id]['m1'].RewardBlock.LossTrial + mData[id]['m1'].LossBlock.LossTrial)/2],
-            label:"M1 Trial Effect",   // legend name 
+            label:"Trial Effect",   // legend name 
             fill:false,    // fill areas below line
             borderColor: '#ccc',
             backgroundColor: '#ccc',
