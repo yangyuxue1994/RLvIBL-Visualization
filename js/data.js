@@ -10,7 +10,7 @@ var currID = 0;
 var subjectChart = null;
 var modelCharts = [];
 
-const url = 'https://raw.githubusercontent.com/UWCCDL/RLvIBL/actr/actr-models/model_output/MODELLogLikelihood.csv';
+const url = 'https://raw.githubusercontent.com/UWCCDL/RLvIBL/actr/actr-models/model_output/max_loglikelihood.csv';
 d3.csv(url)
 .then(function(data){
     data.forEach(function(d, i) {
@@ -18,22 +18,13 @@ d3.csv(url)
         // console.log(d)
         d['PSwitch.LL.m1'] = +d['PSwitch.LL.m1'];
         d['PSwitch.LL.m2'] = +d['PSwitch.LL.m2'];
-        d['LLDiff'] = Math.abs(d['PSwitch.LL.m1']-d['PSwitch.LL.m2']);
-        // if(d.LLDiff != 0){
-        //     if (d.LLDiff > 0) {
-        //         d.color = '#fee0d2'
-        //     } else{
-        //         d.color = '#deebf7' 
-        //     }
-        // } else {
-        //     d.color = '#636363' 
-        // }
-
+        d['maxLL_diff'] = +d['maxLL_diff'];
+        // console.log(d['maxLL_diff'])
         // save data
         LLData.push({'index':i, 
             'm1':d['PSwitch.LL.m1'], 
             'm2':d['PSwitch.LL.m2'], 
-            'diff':d['LLDiff'],
+            'maxLL_diff':d['maxLL_diff'],
             'color':d.color
         });
 
@@ -75,9 +66,9 @@ d3.csv(url)
         })
     });
     //LLData = LLData.slice().sort((a, b) => d3.descending(a.diff, b.diff))
-    LLData = LLData.slice().sort((a, b) => d3.descending(Math.abs(a.diff), Math.abs(b.diff)));
+    LLData = LLData.slice().sort((a, b) => d3.descending(a.maxLL_diff, b.maxLL_diff));
     LLData.forEach(function(d, i) {
-        LLDataSorted.push({'sortedIndex':i, 'index':d['index'], 'm1':d['m1'], 'm2':d['m2'], 'diff':d['diff']})
+        LLDataSorted.push({'sortedIndex':i, 'index':d['index'], 'm1':d['m1'], 'm2':d['m2'], 'maxLL_diff':d['maxLL_diff']})
     });
     
     // console.log(LLData)
@@ -97,7 +88,7 @@ plotHist0 = function(data) {
     console.log(data[0])
     // plot chart
     const dummy_dataset  = {
-      labels: data.map(d=>d.diff),
+      labels: data.map(d=>d.maxLL_diff),
       datasets:[{
         type:'bar',
         data:data.map(d=>d.index),

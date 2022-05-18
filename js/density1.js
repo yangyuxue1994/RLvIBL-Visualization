@@ -31,7 +31,10 @@ function plotHist1(data) {
 
     // Compute kernel density estimation
     var kde = kernelDensityEstimator(kernelEpanechnikov(7), x.ticks(40))
-    var density =  kde( data.map(function(d){  return d.diff; }) )
+    var density =  kde( data.map(function(d){  
+        //console.log(d.maxLL_diff)
+        return d.maxLL_diff; 
+    }) )
 
     // Plot the area
     svg.append("path")
@@ -47,6 +50,15 @@ function plotHist1(data) {
         .x(function(d) { return x(d[0]); })
         .y(function(d) { return y(d[1]); })
     );
+
+    svg.append("line")
+    .attr("x1", 0)  //<<== change your code here
+    .attr("y1", 0)
+    .attr("x2", 0)  //<<== and here
+    .attr("y2", height - margin.top - margin.bottom)
+    .style("stroke-width", 0)
+    .style("stroke", "red")
+    .style("fill", "none");
 
     // Function to compute density
     function kernelDensityEstimator(kernel, X) {

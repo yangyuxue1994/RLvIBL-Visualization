@@ -17,7 +17,7 @@ plotChart = function(data) {
         order: 1
       }, {
         type:'scatter',
-        data:data.map(d=>d.m2),
+        data:data.map(d => d.m2),
         label:"LogLikelihood of M2",   // legend name 
         fill:false,    // fill areas below line
         pointRadius: 5,
@@ -28,7 +28,7 @@ plotChart = function(data) {
         order: 1
       }, {
         type:'bar',
-        data:data.map(d=>d.diff),
+        data:data.map(d => d.maxLL_diff),
         label:"LL Diff",   // legend name 
         fill:false,    // fill areas below line
         borderColor: 'rgb(255, 99, 132)',

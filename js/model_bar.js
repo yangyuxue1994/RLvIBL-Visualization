@@ -77,7 +77,7 @@ function convertModelData(mData, id, m) {
             barPercentage: 0.3
         }, { 
             type: "line",
-            data: [(mData[id][m].RewardBlock.RewardTrial + mData[id][m].RewardBlock.LossTrial)/2, (mData[id]['m1'].LossBlock.RewardTrial + mData[id]['m1'].LossBlock.LossTrial)/2],
+            data: [(mData[id][m].RewardBlock.RewardTrial + mData[id][m].RewardBlock.LossTrial)/2, (mData[id][m].LossBlock.RewardTrial + mData[id][m].LossBlock.LossTrial)/2],
             label:"Block Effect",   // legend name 
             fill:false,    // fill areas below line
             borderColor: '#444',
@@ -86,7 +86,7 @@ function convertModelData(mData, id, m) {
             barPercentage: 0.5
         }, { 
             type: "line",
-            data: [(mData[id][m].RewardBlock.RewardTrial + mData[id][m].LossBlock.RewardTrial)/2, (mData[id]['m1'].RewardBlock.LossTrial + mData[id]['m1'].LossBlock.LossTrial)/2],
+            data: [(mData[id][m].RewardBlock.RewardTrial + mData[id][m].LossBlock.RewardTrial)/2, (mData[id][m].RewardBlock.LossTrial + mData[id][m].LossBlock.LossTrial)/2],
             label:"Trial Effect",   // legend name 
             fill:false,    // fill areas below line
             borderColor: '#ccc',
